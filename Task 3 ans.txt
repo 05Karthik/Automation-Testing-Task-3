@@ -1,0 +1,120 @@
+Q-1:
+
+ import org.openqa.selenium.WebDriver;
+ import org.openqa.selenium.firefox.FirefoxDriver;
+ public class FirefoxScript {
+
+	public static void main(String[] args) throws InterruptedException {
+		// Set the path of Webdriver
+			System.setProperty("webDriver.Firefox.driver", "D://Drivers//geckodriver.exe");
+		// Create object of chrome driver
+			WebDriver driver=new FirefoxDriver();
+		// To maximize the window
+			driver.manage().window().maximize();	
+		// Enter the website Url
+			driver.navigate().to("http://google.com");
+			Thread.sleep(2000);
+		// To get the Current Url of the Page
+			String Url=driver.getCurrentUrl();
+			System.out.println("Url of the Current Page: "+Url);
+			Thread.sleep(1000);
+		// To reload the page
+			driver.navigate().refresh();
+		// To Close the Browser	
+			driver.close();
+		
+	}
+}
+
+Ans:
+
+	Url of the Current Page: https://www.google.com/?gws_rd=ssl
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q-2:
+
+ import org.openqa.selenium.WebDriver;
+ import org.openqa.selenium.chrome.ChromeDriver;
+ public class TaskScript {
+
+	public static void main(String[] args) throws InterruptedException {
+		// Set the path of Webdriver
+			System.setProperty("webDriver.chrome.driver", "D://Drivers//chromedriver.exe");
+		//Create object of chrome driver
+			WebDriver driver=new ChromeDriver();
+		// Enter the websiteUrl
+			driver.navigate().to("https://www.demoblaze.com/");
+		// To maximize the window
+			driver.manage().window().maximize();
+			Thread.sleep(3000);
+		// get title of the page
+			String title=driver.getTitle();
+			System.out.println("Title of the Page: "+title);		
+		//Verify the Title of the Page
+			if(driver.getTitle().equals("STORE")) {
+				System.out.println("Page Landed on Correct Website");
+			}else {
+				System.out.println("Page Not Landed on Correct Website");
+			}
+		
+			driver.quit();
+		
+		
+
+			}
+
+		}	
+
+Ans:
+
+	Title of the Page: STORE
+	Page Landed on Correct Website
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q-3:
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class TaskScript {
+
+	public static void main(String[] args) throws InterruptedException {
+		// Set the path of Webdriver
+			System.setProperty("webDriver.chrome.driver", "D://Drivers//chromedriver.exe");
+		//Create object of chrome driver
+			WebDriver driver=new ChromeDriver();
+		// Enter the websiteUrl
+			driver.navigate().to("https://www.wikipedia.org/");
+		// To maximize the window
+			driver.manage().window().maximize();
+		// To search the keyword	
+			WebElement Searchbox=driver.findElement(By.name("search"));
+			Searchbox.sendKeys("Artificial Intelligence");
+			
+			WebElement Searchicon=driver.findElement(By.xpath("//*[@type='submit']"));
+			Searchicon.click();
+			
+			Thread.sleep(3000);
+			
+			WebElement History=driver.findElement(By.xpath("//*[@id='toc-History']"));
+			History.click();
+			
+			Thread.sleep(2000);
+		// get title of the page
+			String title=driver.getTitle();
+			System.out.println("Title of the Section: "+title);		
+		
+			driver.quit();
+		
+	}
+}
+
+
+Ans:
+	
+	Title of the Section: Artificial intelligence - Wikipedia
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
